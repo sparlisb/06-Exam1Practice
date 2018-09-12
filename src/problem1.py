@@ -2,8 +2,8 @@
 PRACTICE Exam 1, problem 1.
 
 Authors: David Mutchler, Vibha Alangar, Valerie Galluzzi, Mark Hays,
-         Amanda Stouder, their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         Amanda Stouder, their colleagues and Shamus Sparling.
+"""  # done: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 ########################################################################
 # Students:
@@ -24,7 +24,7 @@ Authors: David Mutchler, Vibha Alangar, Valerie Galluzzi, Mark Hays,
 #    STOP working on that problem and ASK YOUR INSTRUCTOR FOR HELP
 #    on it, in class or via Piazza.
 ########################################################################
-
+import math
 import testing_helper
 import time
 
@@ -37,7 +37,7 @@ def main():
 
 
 ########################################################################
-# TODO: 2.  READ the green doc-string for the:
+# done: 2.  READ the green doc-string for the:
 #   - is_prime
 #   - sum_of_digits
 # functions defined below.  You do NOT need to understand their
@@ -164,7 +164,7 @@ def problem1a(m, n):
       -- If m is 30 and n is 100, the correct answer is about 1.278.
     """
     # ------------------------------------------------------------------
-    # TODO: 4. Implement and test this function.
+    # done: 4. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     # ------------------------------------------------------------------
     # ------------------------------------------------------------------
@@ -172,6 +172,10 @@ def problem1a(m, n):
     #    DIFFICULTY:      5
     #    TIME ESTIMATE:   10 minutes.
     # ------------------------------------------------------------------
+    total = 0
+    for k in range(n ** 2 - m ** 2 + 1):
+        total = total + math.sin(k + m ** 2)
+    return total
 
 
 def run_test_problem1b():
@@ -195,6 +199,25 @@ def run_test_problem1b():
     print('Testing the   problem1b   function:')
     print('--------------------------------------------------')
 
+    expected = 5
+    actual = problem1b(3, 5)
+    print('Test 1 expected:', expected)
+    print('       actual:  ', actual)
+
+    expected = 2
+    actual = problem1b(2, 3)
+    print('Test 1 expected:', expected)
+    print('       actual:  ', actual)
+
+    expected = 3
+    actual = problem1b(2, 4)
+    print('Test 1 expected:', expected)
+    print('       actual:  ', actual)
+
+    expected = 6
+    actual = problem1b(6, 3)
+    print('Test 1 expected:', expected)
+    print('       actual:  ', actual)
 
 def problem1b(m, f):
     """
@@ -226,6 +249,12 @@ def problem1b(m, f):
     #    DIFFICULTY:      5
     #    TIME ESTIMATE:   10 to 15 minutes.
     # ------------------------------------------------------------------
+    count = 0
+    for k in range(f * m - m + 1):
+        n = is_prime(m + k)
+        if n == True:
+                count = count + 1
+    return count
 
 
 def run_test_problem1c():
