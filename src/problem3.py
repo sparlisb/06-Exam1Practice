@@ -2,8 +2,8 @@
 PRACTICE Exam 1, problem 3.
 
 Authors: David Mutchler, Vibha Alangar, Valerie Galluzzi, Mark Hays,
-         Amanda Stouder, their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         Amanda Stouder, their colleagues and Shamus Sparling.
+"""  # done: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -145,7 +145,26 @@ def problem3a(window, point, n):
     #    DIFFICULTY:      7 or 8
     #    TIME ESTIMATE:   20 to 35 minutes.
     # ------------------------------------------------------------------
-
+    start = rg.Point(point.x, point.y)
+    end = rg.Point(point.x, point.y + 50)
+    line1 = rg.Line(start, end)
+    line1.thickness = 1
+    line1.attach_to(window)
+    line_others = line1
+    line_others.thickness = 1
+    count = 0
+    for k in range(n):
+        start.x = start.x + 20
+        start.y = start.y + 10
+        end.x = end.x + 20
+        end.y = end.y + 10
+        if line_others.thickness < 13:
+            line_others.thickness = line_others.thickness + 2
+        count = count + line_others.thickness
+        line_others = rg.Line(start, end)
+        line_others.attach_to(window)
+    window.render()
+    return count
 
 def run_test_problem3b():
     """ Tests the   problem3b   function. """
