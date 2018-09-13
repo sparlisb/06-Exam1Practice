@@ -2,7 +2,7 @@
 PRACTICE Exam 1, problem 2.
 
 Authors: David Mutchler, Vibha Alangar, Valerie Galluzzi, Mark Hays,
-         Amanda Stouder, their colleagues and PUT_YOUR_NAME_HERE.
+         Amanda Stouder, their colleagues and Shamus Sparling.
 """  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
@@ -30,7 +30,7 @@ import rosegraphics as rg
 
 def main():
     """ Calls the   TEST   functions in this module. """
-    run_test_problem2a()
+    #run_test_problem2a()
     run_test_problem2b()
 
 
@@ -110,6 +110,20 @@ def problem2a(circle, rectangle, window):
     #    DIFFICULTY:      6
     #    TIME ESTIMATE:   10 to 15 minutes.
     # ------------------------------------------------------------------
+    circle.attach_to(window)
+    rectangle.attach_to(window)
+    window.render()
+    window.continue_on_mouse_click()
+
+    line = rg.Line(rectangle.corner_1, rectangle.corner_2)
+    line.arrow = "last"
+    line.attach_to(window)
+    window.render(.5)
+    window.continue_on_mouse_click()
+
+    circle.fill_color = rectangle.outline_color
+    window.render(.5)
+
 
 def run_test_problem2b():
     """ Tests the  problem2b   function. """
@@ -181,8 +195,15 @@ def problem2b(rect, n, delta, win):
     #    DIFFICULTY:      7
     #    TIME ESTIMATE:   15 to 25 minutes.
     # ------------------------------------------------------------------
-
-
+    rect.attach_to(win)
+    upper_left_corner = rg.Point(rect.corner_1.x - delta, rect.corner_1.y + delta)
+    lower_right_corner = rg.Point(rect.corner_2.x + delta, rect.corner_2.y - delta)
+    for k in range(n + 1):
+        r = rg.Rectangle(upper_left_corner, lower_right_corner)
+        r.attach_to(win)
+        upper_left_corner = rg.Point(upper_left_corner.x - delta, upper_left_corner.y + delta)
+        lower_right_corner = rg.Point(lower_right_corner.x + delta, lower_right_corner.y - delta)
+    win.render()
 # ----------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
 # ----------------------------------------------------------------------

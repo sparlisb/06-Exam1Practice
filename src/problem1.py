@@ -204,20 +204,21 @@ def run_test_problem1b():
     print('Test 1 expected:', expected)
     print('       actual:  ', actual)
 
-    expected = 2
-    actual = problem1b(2, 3)
+    expected = 44
+    actual = problem1b(5, 40)
+    print('Test 1 expected:', expected)
+    print('       actual:  ', actual)
+
+    expected = 1
+    actual = problem1b(2, 1)
     print('Test 1 expected:', expected)
     print('       actual:  ', actual)
 
     expected = 3
-    actual = problem1b(2, 4)
+    actual = problem1b(3, 3)
     print('Test 1 expected:', expected)
     print('       actual:  ', actual)
 
-    expected = 6
-    actual = problem1b(6, 3)
-    print('Test 1 expected:', expected)
-    print('       actual:  ', actual)
 
 def problem1b(m, f):
     """
@@ -251,8 +252,7 @@ def problem1b(m, f):
     # ------------------------------------------------------------------
     count = 0
     for k in range(f * m - m + 1):
-        n = is_prime(m + k)
-        if n == True:
+        if is_prime(m + k) is True:
                 count = count + 1
     return count
 
@@ -336,7 +336,7 @@ def problem1c(n):
            and the sum of the digits in 223092870 is 33.
     """
     # ------------------------------------------------------------------
-    # TODO: 7. Implement and test this function.
+    # done: 7. Implement and test this function.
     #          Tests have been written for you (above).
     #
     ####################################################################
@@ -350,6 +350,11 @@ def problem1c(n):
     #    DIFFICULTY:      7
     #    TIME ESTIMATE:   15 to 20 minutes.
     # ------------------------------------------------------------------
+    total = 1
+    for k in range(n - 1):
+        if is_prime(k + 2) is True:
+            total = total * (k + 2)
+    return sum_of_digits(total)
 
 
 ###############################################################################
