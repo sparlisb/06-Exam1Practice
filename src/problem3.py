@@ -152,19 +152,25 @@ def problem3a(window, point, n):
     line1.attach_to(window)
     line_others = line1
     line_others.thickness = 1
-    count = 0
+    total = 0
+    count = 1
     for k in range(n):
         start.x = start.x + 20
         start.y = start.y + 10
         end.x = end.x + 20
         end.y = end.y + 10
-        if line_others.thickness < 13:
-            line_others.thickness = line_others.thickness + 2
-        count = count + line_others.thickness
+        if k <= 5:
+            count = count + 2
+            f = line_others.thickness
+        else:
+            line_others.thickness = 13
+            f = 13
         line_others = rg.Line(start, end)
         line_others.attach_to(window)
+        total = total + f
     window.render()
     return count
+
 
 def run_test_problem3b():
     """ Tests the   problem3b   function. """
